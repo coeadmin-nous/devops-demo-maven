@@ -109,7 +109,7 @@
                     <inputFile>${project.name}.json</inputFile>
                     <token>${swagger.token}</token>
                     <uploadType>inputFile</uploadType>
-					<format>yaml</format>
+					
                 </configuration>
             </execution>
         </executions>
