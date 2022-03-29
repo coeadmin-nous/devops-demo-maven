@@ -2,7 +2,8 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "devops-demo-maven",
-    "version" : "2.0.0"
+    "version" : "2.0.0",
+    "description" : "Sample API to show case the devops demo"
   },
   "servers" : [ {
     "url" : "http://localhost:8080",
@@ -17,10 +18,11 @@
           "200" : {
             "description" : "OK",
             "content" : {
-              "*/*" : {
+              "application/text" : {
                 "schema" : {
                   "type" : "string"
-                }
+                },
+                "example" : "Hello World"
               }
             }
           }
@@ -35,7 +37,7 @@
           "200" : {
             "description" : "OK",
             "content" : {
-              "*/*" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/HelloWorldBean"
                 }
@@ -52,7 +54,8 @@
         "type" : "object",
         "properties" : {
           "message" : {
-            "type" : "string"
+            "type" : "string",
+            "example" : "Hello World"
           }
         }
       }
