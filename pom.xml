@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.javatpoint</groupId>
 	<artifactId>restful-web-services</artifactId>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 	<name>devops-demo-maven</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -109,6 +109,7 @@
                     <inputFile>${project.name}.json</inputFile>
                     <token>${swagger.token}</token>
                     <uploadType>inputFile</uploadType>
+					<format>yaml</format>
                 </configuration>
             </execution>
         </executions>
