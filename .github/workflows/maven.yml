@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name : Extract version
-      run: mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \    -Dexpression=project.version
+      run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dswagger.org=POC-MG_1 -Dswagger.token=5ce4a89d-4d60-4248-ba8f-457f18cc2156
       
