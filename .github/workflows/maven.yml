@@ -24,6 +24,12 @@ jobs:
         cache: maven
     - name : Extract version
       run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+    - name : Publish version
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://api.swaggerhub.com/apis/POC-MG_1/devops-demo-maven'
+        method: 'GET'
+        Authorization: Bearer 5ce4a89d-4d60-4248-ba8f-457f18cc2156
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dswagger.org=POC-MG_1 -Dswagger.token=5ce4a89d-4d60-4248-ba8f-457f18cc2156
       
