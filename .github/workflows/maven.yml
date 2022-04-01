@@ -31,6 +31,7 @@ jobs:
         url: 'https://api.swaggerhub.com/apis/POC-MG_1/devops-demo-maven'
         method: 'GET'
         bearerToken: '5ce4a89d-4d60-4248-ba8f-457f18cc2156'
+      if: github.ref == 'refs/heads/main'
     - name: Swaggerresponse
       run: echo ${{ steps.swaggereq.outputs.response }}
     - name: Build with Maven
