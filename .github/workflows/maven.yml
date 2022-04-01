@@ -29,7 +29,10 @@ jobs:
       with:
         url: 'https://api.swaggerhub.com/apis/POC-MG_1/devops-demo-maven'
         method: 'GET'
+        id: swaggereq
         bearerToken: '5ce4a89d-4d60-4248-ba8f-457f18cc2156'
+    - name: Swaggerresponse
+      run: echo ${{ steps.swaggereq.outputs.response }}
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dswagger.org=POC-MG_1 -Dswagger.token=5ce4a89d-4d60-4248-ba8f-457f18cc2156
       
