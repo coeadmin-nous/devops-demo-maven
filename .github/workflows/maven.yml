@@ -35,6 +35,7 @@ jobs:
       id: swaggereq
       with:
         url: 'https://api.swaggerhub.com/apis/POC-MG_1/${{ github.event.repository.name }}/${{ steps.vars.outputs.version }}/settings/lifecycle?force=true'
+        data: '{"published": true}'
         method: 'PUT'
         bearerToken: '5ce4a89d-4d60-4248-ba8f-457f18cc2156'
       if: github.ref == 'refs/heads/main'
