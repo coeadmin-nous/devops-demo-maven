@@ -24,7 +24,8 @@ jobs:
         cache: maven
     - name : Extract version
       id: version
-      run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+      run: |
+         echo ::set-env name=TAG_NAME::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
     - name: Swaggerresponse
       run: echo ${{ steps.outputs.version }} 
     - name : Publish version
