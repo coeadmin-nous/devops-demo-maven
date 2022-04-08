@@ -24,8 +24,9 @@ jobs:
         cache: maven
     - name : Extract version
       id: vars
-      run: echo ::set-output name=version::mvn help:evaluate -Dexpression=project.version -q -DforceStdout
-      
+      run: echo ::set-output name=version::(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+    - name: Swaggerresponse
+      run: echo ${{ steps.vars.outputs.version }} 
     - name : Publish version
       uses: fjogeleit/http-request-action@v1
       id: swaggereq
