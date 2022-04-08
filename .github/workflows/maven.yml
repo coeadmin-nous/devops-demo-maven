@@ -23,13 +23,15 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name : Extract version
-      run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+      id: vars
+      run: echo ::set-output name=version::mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+      
     - name : Publish version
       uses: fjogeleit/http-request-action@v1
       id: swaggereq
       with:
-        url: 'https://api.swaggerhub.com/apis/POC-MG_1/devops-demo-maven'
-        method: 'GET'
+        url: 'https://api.swaggerhub.com/apis/POC-MG_1/${{ github.event.repository.name }}/${{ steps.vars.outputs.version }}/settings/lifecycle?force=true'
+        method: 'PUT'
         bearerToken: '5ce4a89d-4d60-4248-ba8f-457f18cc2156'
       if: github.ref == 'refs/heads/main'
     - name: Swaggerresponse
