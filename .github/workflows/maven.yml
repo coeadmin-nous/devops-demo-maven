@@ -28,6 +28,8 @@ jobs:
          echo ::set-output name=version::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
     - name: Swaggerresponse
       run: echo ${{ steps.vars.outputs.version }} 
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml -Dswagger.org=POC-MG_1 -Dswagger.token=5ce4a89d-4d60-4248-ba8f-457f18cc2156      
     - name : Publish version
       uses: fjogeleit/http-request-action@v1
       id: swaggereq
@@ -38,6 +40,4 @@ jobs:
       if: github.ref == 'refs/heads/main'
     - name: Swaggerresponse
       run: echo ${{ steps.swaggereq.outputs.response }}
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml -Dswagger.org=POC-MG_1 -Dswagger.token=5ce4a89d-4d60-4248-ba8f-457f18cc2156
-      
+
