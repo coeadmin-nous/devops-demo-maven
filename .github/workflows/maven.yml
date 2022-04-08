@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name : Extract version
-      id: vars
+      id: version
       run: mvn help:evaluate -Dexpression=project.version -q -DforceStdout
     - name: Swaggerresponse
       run: echo ${{ steps.outputs.version }} 
